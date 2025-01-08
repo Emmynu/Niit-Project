@@ -20,18 +20,10 @@ export async function createUser(email, password, name) {
        localStorage.setItem("token", JSON.stringify(user?.accessToken)) //save the token to local storage
        // send email verification link
        await sendEmailVerification(user)
-        Toastify({
-            text: "Email verification link sent",
-            duration: 2000,
-            style:sucessStyles,
-         }).showToast()
-       
+      showToast("Email Verfication Link sent", sucessStyles)
+       redirect("/")
     } catch (error) {
-        Toastify({
-            text: error?.message,
-            duration: 2000,
-            style:errorStyles,
-         }).showToast()
+      showToast(error?.message, errorStyles)
     }
 }
 
@@ -46,11 +38,7 @@ try {
     provider: authProvider
     })
 } catch (error) {
-    Toastify({
-        text: error?.message,
-        duration: 2000,
-        style:errorStyles,
-     }).showToast()
+    showToast(error?.message, errorStyles)
     
 }
 }
@@ -61,30 +49,13 @@ export async function loginUser(email, password) {
         const { user } = await signInWithEmailAndPassword(auth, email, password)
         localStorage.setItem("token", JSON.stringify(user?.accessToken)) // new token for new session
         if (!user?.emailVerified) {
-            Toastify({
-                text: "Verify your account ",
-                duration: 2000,
-                style:sucessStyles,
-             }).showToast()
-            
+            showToast("Verify your account", sucessStyles)
         } else {
-            Toastify({
-                text: "Successfully logged in ",
-                duration: 2000,
-                style:sucessStyles,
-             }).showToast()
-
-           setTimeout(() => {
-             window.location = "/"
-           }, 2000);
+            showToast("Successfully LoggedIn", sucessStyles)
+            redirect("/")
         }
     } catch (error) {
-         Toastify({
-                text: error?.message,
-                duration: 2000,
-                style:errorStyles,
-             }).showToast()
-             
+        showToast(error?.message, errorStyles)     
     }
     
     
@@ -96,11 +67,7 @@ export async function getUserInDb() {
     const user =  get(child(dbRef, `users/`)).then(res=> res.exists()? Object.entries(res.val()) : [])
     return user
    } catch (error) {
-    Toastify({
-        text: error?.message,
-        duration: 2000,
-        style:errorStyles,
-     }).showToast()
+    showToast(error?.message, errorStyles)
    }
 }
 
@@ -109,27 +76,14 @@ export async function sendResetPasswordLink(email) {
     const user =  await getUserInDb()
     if (user?.find(item=>item[1]?.email === email)) {
         await sendPasswordResetEmail(auth, email)
-        Toastify({
-            text: "Reset Link sent ",
-            duration: 2000,
-            style:sucessStyles,
-         }).showToast()
-       setTimeout(() => {
-         window.location= "/auth/login.html"
-       }, 2000);
+       showToast("Reset Link sent", sucessStyles)
+      redirect("/auth/login.html")
     } else {
-        Toastify({
-            text: "No user Found!",
-            duration: 2000,
-            style:errorStyles,
-         }).showToast()
+        showToast("No user Found", errorStyles)
     }
    } catch (error) {
-    Toastify({
-        text:error?.message,
-        duration: 2000,
-        style:errorStyles,
-     }).showToast()
+    showToast(error?.message, errorStyles)
+
    }
 }
 
@@ -141,16 +95,26 @@ export async function googleAuth() {
         if(!res?.find(item=>item[1]?.id === user?.uid)){
             await saveUserToDb(user, "Google") 
         }
-        Toastify({
-            text: "Authentication Successfully",
-            duration: 2000,
-            style:sucessStyles,
-        }).showToast()
+        localStorage.setItem("token",JSON.stringify(user?.accessToken))
+       showToast("Authentication Successful", sucessStyles)
+        redirect("/")
     } catch (error) {
-        Toastify({
-            text: error?.message,
-            duration: 2000,
-            style:errorStyles,
-        }).showToast()
+        showToast(error?.message, errorStyles)
     }
 }
+
+
+export function redirect(url) {
+    setTimeout(() => {
+        window.location = url
+    }, 2000);
+}
+
+export function showToast(message, style) {
+    Toastify({
+        text:message,
+        duration: 2000,
+        style:style,
+     }).showToast()
+}
+

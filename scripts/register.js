@@ -1,5 +1,5 @@
 import { auth } from "./firebase-config.js";
-import { createUser, nameRegex, emailRegex, passwordRegex, googleAuth } from "./auth-actions.js";
+import { createUser, nameRegex, emailRegex, passwordRegex, googleAuth, showToast } from "./auth-actions.js";
 import { errorStyles } from "./toastify.js";
 
 
@@ -24,12 +24,8 @@ registerForm.addEventListener("submit", async (e)=>{
 
 
     if (!name || !email || !password  ) {
-       Toastify({
-        text: "Invalid Credentials",
-        duration: 2000,
-        style:errorStyles
-       }).showToast()
-    isLoading = false
+       showToast("Invalid Credentials", errorStyles)
+        isLoading = false
     }
     else {
         const newName = nameRegex.test(name)
@@ -37,34 +33,18 @@ registerForm.addEventListener("submit", async (e)=>{
         const newEmail = emailRegex.test(email)
 
         if (!newName) {
-            Toastify({
-                text: "Name should contain Alphabetic characters",
-                duration: 2000,
-                style:errorStyles,
-            }).showToast()
+            showToast("Name should contain Alphabetic characters", errorStyles)
         } 
 
         if (!newEmail) {
-            Toastify({
-                text: "Invalid Email",
-                duration: 2000,
-                style:errorStyles,
-            }).showToast()
+            showToast("Invalid Email", errorStyles)
         } 
-        if (checkbox === undefined) {  
-            Toastify({
-                text: "Agree with the terms & conditons to proceed",
-                duration: 2000,
-                style:errorStyles,
-            }).showToast()
+        if (checkbox === undefined) { 
+            showToast("Agree with the terms & conditons to proceed", errorStyles)
         } 
 
         if (!newPassword) {
-            Toastify({
-                text: "Password should contain six Numerical characters ",
-                duration: 2000,
-                style:errorStyles,
-            }).showToast()
+            showToast("Password should contain six Numerical characters", errorStyles)
         } 
 
 

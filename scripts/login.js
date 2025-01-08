@@ -1,4 +1,4 @@
-import { loginUser, emailRegex, passwordRegex } from "./auth-actions.js"
+import { loginUser, emailRegex, passwordRegex, googleAuth, showToast } from "./auth-actions.js"
 import { errorStyles } from "./toastify.js"
 
 const loginForm = document.querySelector("#login")
@@ -17,11 +17,7 @@ loginForm.addEventListener("submit", async (e)=>{
     }
 
     if ( !email || !password  ) {
-        Toastify({
-            text: "Invalid Credentials",
-            duration: 2000,
-            style:errorStyles
-        }).showToast()
+      showToast("Invalid Credentials", errorStyles)
         isLoading = false
     }
     else {
@@ -29,11 +25,11 @@ loginForm.addEventListener("submit", async (e)=>{
     const newEmail = emailRegex.test(email)
 
     if (!newEmail) {
-        console.log("Invalid Email");  
+       showToast("Invalid Email", errorStyles)
     } 
 
     if (!newPassword) {
-        console.log("Password should contain six Numerical characters ");  
+        showToast("Password should contain six Numerical characters", errorStyles)
     } 
 
 

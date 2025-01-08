@@ -1,4 +1,4 @@
-import { emailRegex, sendResetPasswordLink } from "./auth-actions.js";
+import { emailRegex, sendResetPasswordLink, showToast } from "./auth-actions.js";
 import { errorStyles } from "./toastify.js";
 
 const resetForm = document.querySelector("#reset-password")
@@ -16,11 +16,7 @@ resetForm.addEventListener("submit",async(e)=>{
         }
 
         if (!email) {
-            Toastify({
-                text: "Invalid Credentials",
-                duration: 2000,
-                style:errorStyles
-            }).showToast()
+            showToast("Invalid Credentials", errorStyles)
             isLoading = false
         }
         else {
@@ -28,11 +24,7 @@ resetForm.addEventListener("submit",async(e)=>{
 
         
         if (!newEmail) {
-            Toastify({
-                text: "Invalid Email",
-                duration: 2000,
-                style:errorStyles
-            }).showToast()
+            showToast("Invalid Email", errorStyles)
             
         } 
 

@@ -26,6 +26,7 @@ resetForm.addEventListener("submit",async(e)=>{
         else {
         const newEmail = emailRegex.test(email)
 
+        
         if (!newEmail) {
             Toastify({
                 text: "Invalid Email",

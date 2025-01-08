@@ -2,6 +2,7 @@ import { loginUser, emailRegex, passwordRegex } from "./auth-actions.js"
 import { errorStyles } from "./toastify.js"
 
 const loginForm = document.querySelector("#login")
+const googleBtn =  document.querySelector(".google-btn")
 const btn  = document.querySelector(".form-btn")
 let isLoading = false
  
@@ -46,4 +47,8 @@ loginForm.addEventListener("submit", async (e)=>{
     btn.disabled = false
     btn.innerHTML = "Login to Account"
 }
+})
+
+googleBtn.addEventListener("click",async()=>{
+    await googleAuth()
 })

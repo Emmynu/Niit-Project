@@ -1,5 +1,6 @@
 :root{
-    --main-color: #03457C
+    --main-color: #03457C;
+    --light-color: #dfeffa 
 }
 
 body{
@@ -104,7 +105,29 @@ body{
 .forgot-container > a:hover{
     text-decoration: underline;
 }
-
+.google-btn{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    background-color: var(--light-color);
+    justify-content: center;
+    border: none;
+    outline: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 95%;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(44, 44, 44);
+    font-size: 15px;
+   
+}
+.google-btn > img{
+    width: 27px;
+    margin-right: 7px;
+    height: 27px;
+}
 @media (max-width:1024px) {
     .auth-container{
         width: 50%;

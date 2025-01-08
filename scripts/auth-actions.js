@@ -1,5 +1,5 @@
-import { auth, db } from "./firebase-config.js";
-import {  createUserWithEmailAndPassword , updateProfile, sendEmailVerification,signInWithEmailAndPassword,sendPasswordResetEmail }  from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+import { auth, db, provider } from "./firebase-config.js";
+import {  createUserWithEmailAndPassword , updateProfile, sendEmailVerification,signInWithEmailAndPassword,sendPasswordResetEmail,signInWithPopup }  from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import { push, ref, child, get } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
 import { errorStyles, sucessStyles } from "./toastify.js";
 
@@ -16,7 +16,7 @@ export async function createUser(email, password, name) {
         displayName: name,
         photoURL: "https://images.pexels.com/photos/884788/pexels-photo-884788.jpeg?auto=compress&cs=tinysrgb&w=600"
        })   
-       await saveUserToDb(user)
+       await saveUserToDb(user, "Password")
        localStorage.setItem("token", JSON.stringify(user?.accessToken)) //save the token to local storage
        // send email verification link
        await sendEmailVerification(user)
@@ -35,14 +35,15 @@ export async function createUser(email, password, name) {
     }
 }
 
-export async function saveUserToDb(user) {
+export async function saveUserToDb(user, authProvider) {
 try {
     const {uid, email, photoURL,displayName} = user
     await push(ref(db, `users/`),{
     name:displayName,
     email, 
     url:photoURL,
-    id:uid
+    id:uid,
+    provider: authProvider
     })
 } catch (error) {
     Toastify({
@@ -105,7 +106,7 @@ export async function getUserInDb() {
 
 export async function sendResetPasswordLink(email) {
    try {
-    const user =  await getUserInDb(auth?.currentUser?.uid)
+    const user =  await getUserInDb()
     if (user?.find(item=>item[1]?.email === email)) {
         await sendPasswordResetEmail(auth, email)
         Toastify({
@@ -130,4 +131,26 @@ export async function sendResetPasswordLink(email) {
         style:errorStyles,
      }).showToast()
    }
+}
+
+export async function googleAuth() {
+    try {
+        const { user } = await signInWithPopup(auth, provider)
+        const res = await getUserInDb()
+
+        if(!res?.find(item=>item[1]?.id === user?.uid)){
+            await saveUserToDb(user, "Google") 
+        }
+        Toastify({
+            text: "Authentication Successfully",
+            duration: 2000,
+            style:sucessStyles,
+        }).showToast()
+    } catch (error) {
+        Toastify({
+            text: error?.message,
+            duration: 2000,
+            style:errorStyles,
+        }).showToast()
+    }
 }

@@ -1,9 +1,10 @@
 import { auth } from "./firebase-config.js";
-import { createUser, nameRegex, emailRegex, passwordRegex } from "./auth-actions.js";
+import { createUser, nameRegex, emailRegex, passwordRegex, googleAuth } from "./auth-actions.js";
 import { errorStyles } from "./toastify.js";
 
 
 const registerForm = document.querySelector("#register")
+const googleBtn =  document.querySelector(".google-btn")
 const btn  = document.querySelector(".form-btn")
 let isLoading = false
 
@@ -82,3 +83,6 @@ registerForm.addEventListener("submit", async (e)=>{
 })
 
 
+googleBtn.addEventListener("click",async()=>{
+    await googleAuth()
+})

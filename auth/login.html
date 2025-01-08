@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vector Pay</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"><!--Toastify library--> 
+    <link rel="stylesheet" href="../styles/auth/main.css">
+</head>
+<body>
+    <main class="auth-container">
+        <section class="logo-container">
+            <img src="../images/logo.png" alt="logo" class="logo">
+            <h1 class="logo-label">VectorPay</h1>
+        </section>
+        <section class="auth-label-container">
+            <h3>Welcome Back </h3>
+            <p>Need an Account?<a href="/auth/register.html" class="register-link">Register</a> </p>
+        </section>
+
+        <form class="form-container" id="login">
+            <article>
+                <label for="email">Email*</label><br />
+                <input type="email" name="email" id="email" placeholder="johndoe@gmail.com">
+            </article>
+
+
+            <article>
+                <label for="password">Password* </label> <br />
+                <input type="number" name="password" id="password" placeholder="123456" maxlength="6" minlength="6">
+            </article>
+
+            <article class="forgot-container" >
+                <a href="/auth/reset-password.html" style=" color: var(--main-color);">Forgot Password?</a>
+            </article>
+
+            <button type="submit" class="form-btn" >Login to account</button>
+        </form>
+
+        <span><a href="/"></a></span>
+    </main>
+
+
+    <script src="../scripts/login.js" type="module"></script>
+    <script src="../scripts/firebase-config.js" type="module"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+</html>

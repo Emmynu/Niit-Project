@@ -1,0 +1,131 @@
+:root{
+    --main-color: #03457C
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.auth-container{
+  width: 30%;
+  margin: 6% auto;
+}
+.logo-container{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+.logo-container > img {
+    width: 37px;
+    height: 37px;
+}
+.logo-container > h1 {
+    font-size: 24px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: var(--main-color);
+    letter-spacing: 0.05rem;
+}
+.auth-label-container > h3{
+    font-family: Arial, Helvetica, sans-serif;
+    /* margin-top: -3px; */
+    font-size: 20px;
+}
+.auth-label-container > p, .register-link {
+    color: var(--main-color);
+    font-size: 14px;
+    margin-top: -10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+.register-link{
+    margin-left: 5px;
+}
+.form-container {
+    width: 95%;
+}
+.form-container > article{
+    margin-top: 20px;
+    
+}
+.form-container > article > label{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.form-container > article > input {
+    margin-top: 6px;
+    border: 1.5px solid black;
+    outline: none;
+    padding: 10px 5px;
+    font-family: Arial, Helvetica, sans-serif;
+   width: 100%;
+    font-size: 15px;
+    letter-spacing: 0.04rem;
+}
+.form-container > article > input::placeholder{
+    color: rgb(63, 63, 63);
+}
+.form-btn{
+    background-color: var(--main-color);
+    color: white;
+    outline: none;
+    border: none;
+    padding: 10px ;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 100%;
+    cursor: pointer;
+    user-select: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.form-btn:disabled{
+    opacity: 0.70;
+
+}
+.agreement-container > input[type="checkbox"]{
+    cursor: pointer;
+}
+.forgot-container{
+  display: flex;
+  justify-content: end;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 900;
+  font-size: 15px;
+} 
+.forgot-container > a {
+  transition: all 1.5s linear;
+  text-decoration: none;  
+}
+.forgot-container > a:hover{
+    text-decoration: underline;
+}
+
+@media (max-width:1024px) {
+    .auth-container{
+        width: 50%;
+    }
+}
+
+
+@media (max-width:800px) {
+    .auth-container{
+        width: 80%;
+        margin: 20% auto;
+    }
+    .form-btn{
+        font-size: 15px;
+    }
+}
+
+
+@media (max-width:500px) {
+    .auth-container{
+        width: 95%;
+    }
+}
+

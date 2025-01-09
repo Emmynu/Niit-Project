@@ -1,0 +1,206 @@
+:root{
+    --main-color: #03457C;
+    --light-color: #dfeffa;
+}
+
+
+.dashboard-container{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin: 0px 10px;
+    box-shadow: 5px 12px 20px rgba(165, 164, 164, 0.6);
+}
+.side-bar-lg{
+    background-color: white;
+    padding: 10px;
+    /* grid-column: span 1; */
+}
+.dashboard-content-container{
+    background-color: var(--light-color);
+    grid-column: span 4;
+    height: 100vh;
+    width: 100%;
+}
+.logo-container{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+.logo-container > img {
+    width: 35px;
+    height: 35px;
+}
+.logo-container > h1 {
+    font-size: 24px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: var(--main-color);
+}
+
+
+.links-container > section{
+    display: flex;
+    align-items: center;
+    margin: 30px 5px;
+    cursor: pointer;
+    user-select: none;
+    transition: all .3s linear;
+}
+.links-container > section:hover{
+    transform: scale(1.05);
+}
+.links-container > section >img {
+    width: 22px;
+    height: 22px;
+}
+.links-container > section > a{
+    margin-left: 5px;
+    text-decoration: none;
+    color: var(--main-color);
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.dashboard-nav, .dashboard-nav-sm{
+    background: white;
+    padding:  20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.search-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid  black;
+    padding: 7px;
+    width: 30%;
+}
+.search-container  input[type="search"]{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 13px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 100%;
+    color: rgb(71, 71, 71);
+}
+.search-container > img {
+    width: 17px;
+    height: 17px;
+}
+
+.dashboard-nav > h2{
+    font-weight: medium;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 21px;
+}
+.user-profile {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 50px;
+    margin-right: 10px;
+
+}
+.user-container{
+    display: flex;
+    align-items: center;
+}
+.user-container > div > p {
+    font-weight: bold;
+    font-size: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 0px;
+    color: var(--main-color);
+}
+.user-container > div > span {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    color: var(--main-color);
+}
+#logout{
+    border: none;
+    background-color: var(--main-color);
+    color: white;
+    padding: 10px 25px;
+    font-weight: 700;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    letter-spacing: 0.04rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 30px;
+    font-size: 14px;
+}
+.dashboard-nav-sm{
+    display: none;
+}
+.nav-bar-container{
+    display: flex;
+    flex-direction: column;
+}
+.nav-bar-container div{
+    background-color: var(--main-color);
+    height: 3px;
+    margin-top: 3px;
+}
+.nav-bar-container div:nth-child(even){
+    width: 24px
+}
+.nav-bar-container div:nth-child(odd){
+    width: 20px;
+}
+@media (max-width:1024px) {
+    .dashboard-container{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .side-bar-lg{
+        grid-column: span 1;
+    }
+    .dashboard-content-container{
+        grid-column: span 3;
+    }
+}
+
+
+@media (max-width:1000px) {
+    .side-bar-lg{
+        display: none;
+        
+    }
+    .dashboard-content-container{
+        grid-column: span 4;
+        /* height: 100%; */
+    }
+    .dashboard-nav{
+      display: none;
+    }
+    .dashboard-nav-sm{
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 30px;
+        
+    }
+    .dashboard-container{
+        margin: -5px ;
+    }
+    #logout{
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 800px) {
+  .logo-container > img{
+    width: 25px;
+    height: 25px;
+  }
+  .logo-container > h1{
+    font-size: 18px;
+  }
+  #logout{
+    font-size: 12px;
+    padding: 10px 20px;
+    font-weight: 700;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+}

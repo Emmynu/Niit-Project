@@ -21,7 +21,7 @@ export async function createUser(email, password, name) {
        // send email verification link
        await sendEmailVerification(user)
       showToast("Email Verfication Link sent", sucessStyles)
-       redirect("/")
+       redirect("/auth/login.html")
     } catch (error) {
       showToast(error?.message, errorStyles)
     }
@@ -35,7 +35,9 @@ try {
     email, 
     url:photoURL,
     id:uid,
-    provider: authProvider
+    provider: authProvider,
+    balance: 0,
+    accountNumer: generateAccountNumber()
     })
 } catch (error) {
     showToast(error?.message, errorStyles)
@@ -101,6 +103,14 @@ export async function googleAuth() {
     } catch (error) {
         showToast(error?.message, errorStyles)
     }
+}
+
+function generateAccountNumber() {
+    let accountNumer =  ""
+    for (let i = 0; i < 10; i++) {
+        accountNumer += Math.floor(Math.random()* 10)
+    }
+    return accountNumer
 }
 
 

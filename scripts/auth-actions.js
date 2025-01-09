@@ -37,7 +37,7 @@ try {
     id:uid,
     provider: authProvider,
     balance: 0,
-    accountNumer: generateAccountNumber()
+    accountNumber: generateAccountNumber()
     })
 } catch (error) {
     showToast(error?.message, errorStyles)

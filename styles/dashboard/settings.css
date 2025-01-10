@@ -78,16 +78,18 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .loading{
-    font-weight: 900;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 17px;
-    color: var(--light-black);
+    margin: 20% 50%;
+    width: 30px;
+    height: 30px;
 }
 @media (max-width:1000px) {
     .profile, .details{
         grid-template-columns: repeat(2,1fr);
     }
-   
+    .loading{
+        height: 10vh;
+        margin: 50%;
+    }
 }
 
 @media (max-width:800px) {
@@ -96,5 +98,14 @@
     }
     .profile, .details{
         grid-template-columns: repeat(1,1fr);
+    }
+    .loading{
+        height: 30vh;
+    }
+    .profile-label-container > div > p{
+        font-size: 12px;
+    }
+    .profile-label-container  > p{
+        font-size: 13px;
     }
 }

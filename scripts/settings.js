@@ -5,8 +5,7 @@ import { onAuthStateChanged  }  from "https://www.gstatic.com/firebasejs/11.1.0/
 let isLoading  = true
 
 if(isLoading){
-   document.querySelector(".profile").innerHTML = "<h2 class='loading'>Loading...</h2>"
-   document.querySelector(".profile-details").innerHTML = "<h2 class='loading'>Loading...</h2>"
+   document.querySelector(".details-container").innerHTML = "<section class='loading'><img  src='/images/loading.gif' </img></section>"
 }
 
 window.addEventListener("DOMContentLoaded",async()=>{
@@ -25,7 +24,9 @@ window.addEventListener("DOMContentLoaded",async()=>{
                  document.querySelector(".label").textContent = "Looks like you are not verified yet, Verify your account to use the full potentials of Vector Pay"
             }
             if (!isLoading) {
-                    document.querySelector(".profile-details").innerHTML = `
+                const profileDetails = document.createElement("section")
+                profileDetails.innerHTML = `
+                <section class="profile-details">
                     <header>
                         <h3>Profile Details</h3>
                     </header>
@@ -55,18 +56,23 @@ window.addEventListener("DOMContentLoaded",async()=>{
                             <h4>Account Type</h4>
                             <p>Personal</p>
                         </div>
-                    </article> `
-                  
+                </article>
+                <section> `
+             document.querySelector(".details-container").append(profileDetails)
             }
          })
     }    
     if(!isLoading){
-        document.querySelector(".profile").innerHTML = `    
-        <article>
-            <img src="/images/profile.png" alt="">
-            <h3>Welcome, <span class="name"></span></h3>
-            <p class="label"></p>
-        </article>`
+        const profile = document.createElement("section")
+        profile.innerHTML = `<section class="profile">
+            <article>
+                <img src="/images/profile.png" alt="">
+                <h3>Welcome, <span class="name"></span></h3>
+                <p class="label"></p>
+            </article>
+        <section>`
+        document.querySelector(".details-container").append(profile)
+        document.querySelector(".loading").style.display = "none"
     }
 })
 

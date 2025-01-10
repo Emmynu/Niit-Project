@@ -1,0 +1,152 @@
+:root{
+    --main-color: #03457C;
+    --light-color: #dfeffa;
+    --dark-red: #842029;
+    --light-black:#474747;
+    --lighter-color:#f0f4f8;
+}
+
+.wallet-container{
+    padding: 35px;
+}
+
+.dashboard-label > h2{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: var(--main-color);
+    font-size: 20px;
+}
+.dashboard-label > p {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    margin-top: -10px;
+}
+.wallet-balance-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: start;
+    gap: 10px;
+    margin-top: 35px;
+}
+.balance-container{
+    margin-top: 20px;
+}
+.balance-container, #deposit{
+    background-color: white;
+    padding: 25px ;
+    border: 1px solid #dddcdc99;
+    border-radius: 9px;
+    width: 75%;
+    /* box-shadow: 4px 15px 25px #acabab99; */
+}
+.balance-container >div:first-child > h5{
+    color: var(--main-color);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+.balance-container >div:nth-child(2) > h1{
+    color: #03457C;
+    font-size: 32px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: -12px;
+}
+.balance-container >div:nth-child(2) > a{
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 13px;
+    text-decoration: none;
+    color: var(--main-color);
+}
+hr{
+    margin-top: -25px;
+    height: 1px;
+}
+.account-number-container{
+    display: flex;
+    margin-top: -10px;
+    align-items: center;
+}
+h2 ~ p {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: var(--main-color);
+    margin-left: 4px;
+}
+.account-number-container > h2{
+    font-size: 12px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: var(--main-color);
+}
+
+
+/* DEPOSIT  */
+#deposit{
+    margin-top: 20px;
+}
+.deposit-label > h2{
+    color: var(--main-color);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+.deposit-form{
+    display: flex;
+    flex-direction: column;
+}
+.deposit-form > label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+.deposit-form > section > input{
+    border: none;
+    border-bottom:  1px solid var(--light-black);
+    padding: 10px 5px;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.04rem;
+    width: 100%;
+}
+.naira-style{
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+}
+.deposit-form > button{
+    margin-top: 20px;
+    background-color: var(--main-color);
+    color: white;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 18px;
+}
+.deposit-form > button:disabled{
+    opacity: 0.5;
+}
+
+@media (max-width:1000px) {
+  
+    .balance-container, #deposit{
+        width: auto;
+    }
+}
+
+@media (max-width: 800px) {
+    .wallet-balance-container{
+       grid-template-columns: repeat(1, 1fr);
+       margin-top: 20px;
+    }
+    .wallet-container{
+        padding: 20px 10px;
+    }
+    .deposit-form > button {
+        font-size: 14px;
+    }
+}

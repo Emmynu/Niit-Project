@@ -18,10 +18,3 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app)
 export const db = getDatabase(app)
 export const provider = new GoogleAuthProvider()
-const functions = getFunctions(app);
-
-if (window.location.hostname === "localhost") { // Use window.location
-    connectAuthEmulator(auth, "http://localhost:9099");
-    connectDatabaseEmulator (db, 'localhost', 8080);
-    connectFunctionsEmulator(functions, 'localhost', 5001)
-}

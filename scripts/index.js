@@ -1,10 +1,12 @@
-import { onAuthStateChanged, signOut  }  from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+import { onAuthStateChanged, signOut  }  from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"; 
 import { auth } from "./firebase-config.js";
-import {  redirect } from "./auth-actions.js";
+import {  redirect,showToast , getUserInDb} from "./auth-actions.js";
 import { sideBarComponent, dashboardNav } from "./component.js";
+import { errorStyles } from "./toastify.js";
 
 const token =  JSON.parse(localStorage.getItem("token"))
-
+const balanceDOM = document.querySelector(".balance")
+const accountNumberDOM = document.querySelector(".account-number")
 
 // protecting the home route against unauthenticated and unauthorized users
 window.addEventListener("DOMContentLoaded", async()=>{
@@ -21,8 +23,8 @@ window.addEventListener("DOMContentLoaded", async()=>{
         </div>
         `
        }, 0);
-       
-    })    
+    })  
+    await walletBalance()  
 })
 
 // getiing the repeated part of the dashboard and displaying it when the page loads to prevent repition of html code
@@ -58,21 +60,22 @@ document.querySelectorAll("#logout").forEach(btn=>{
 
 
 
-// export async function walletBalance() {
-//   try {
-//     const users =  await getUserInDb()
-//     const newUser = users.filter(user => user[1]?.id === auth?.currentUser?.uid)
-//     if (newUser) {
-//         // display balace and account number
-//         const accountInfo = newUser.map(user => user[1])
-//         balanceDOM.innerHTML = `Balance:  ₦${accountInfo[0]?.balance.toFixed(2)}`
-//     } else {
-//         showToast("User not found!")
-//         redirect("/auth.register.html")
-//     }
-//   } catch (error) {
-//     showToast(error?.message, errorStyles)
-//   }
-// }
+export async function walletBalance() {
+  try {
+    const users =  await getUserInDb()
+    const newUser = users.filter(user => user[1]?.id === auth?.currentUser?.uid)
+    if (newUser) {
+        // display balace and account number
+        const accountInfo = newUser.map(user => user[1])        
+        balanceDOM.innerHTML = `₦${accountInfo[0]?.balance > 9 ? accountInfo[0]?.balance.toFixed(2).toLocaleString('en-US').slice(0,6) : accountInfo[0]?.balance.toFixed(2).toLocaleString('en-US')}`
+        accountNumberDOM.innerHTML = `${accountInfo[0]?.accountNumber}`
+    } else {
+        showToast("User not found!")
+        redirect("/auth.register.html")
+    }
+  } catch (error) {
+    showToast(error?.message, errorStyles)
+  }
+}
 
 

@@ -12,7 +12,7 @@ const accountNumberDOM = document.querySelector(".account-number")
 window.addEventListener("DOMContentLoaded", async()=>{
    onAuthStateChanged(auth,(user)=> {
        if (!user?.emailVerified || !token) {
-            redirect("/auth/login.html")
+            window.location = ("/auth/login.html")
        }
        setTimeout(() => {
         document.querySelector(".user-container").innerHTML = `
@@ -67,7 +67,7 @@ export async function walletBalance() {
     if (newUser) {
         // display balace and account number
         const accountInfo = newUser.map(user => user[1])        
-        balanceDOM.innerHTML = `₦${accountInfo[0]?.balance > 9 ? accountInfo[0]?.balance.toFixed(2).toLocaleString('en-US').slice(0,6) : accountInfo[0]?.balance.toFixed(2).toLocaleString('en-US')}`
+        balanceDOM.innerHTML = `₦${accountInfo[0]?.balance.length > 9 ? accountInfo[0]?.balance.toFixed(2).toLocaleString('en-US').slice(0,6) : accountInfo[0]?.balance.toFixed(2).toLocaleString('en-US')}`
         accountNumberDOM.innerHTML = `${accountInfo[0]?.accountNumber}`
     } else {
         showToast("User not found!")

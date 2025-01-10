@@ -12,7 +12,7 @@ export const sideBarComponent = `
                 </section>
                 <section>
                     <img src="/images/transfer.png" alt="">
-                    <a href="#">Transfer</a>
+                    <a href="/dashboard/transfer.html">Transfer</a>
                 </section>
                 <section>
                     <img src="/images/withdraw.png" alt="">
@@ -45,7 +45,7 @@ export const sideBarComponent = `
                     </section>
                     <section>
                         <img src="/images/transfer.png" alt="">
-                        <a href="#">Transfer</a>
+                        <a href="/dashboard/transfer.html">Transfer</a>
                     </section>
                     <section>
                         <img src="/images/withdraw.png" alt="">

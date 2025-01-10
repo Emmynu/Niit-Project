@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vector Pay - Transfer</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"><!--Toastify library--> 
+    <link rel="stylesheet" href="../styles/dashboard/nav.css">
+</head>
+<body>
+    <main class="dashboard-container">
+        <section class="side-bar-lg-container"></section>
+        <section  class="dashboard-content-container">
+            <article class="dashboard-nav-container"></article>
+            <article>
+                <form class="vector-form-container">
+                    <input type="number" name="vectorNumber" class="vector-number" minlength="10" maxlength="10">
+                </form>
+                <div class="account-info"></div>
+            </article>
+        </section>
+    </main>
+    <script src="/scripts/index.js"  type="module"></script>
+    <script src="/scripts/transfer.js"  type="module"></script>
+    <script src="/scripts/pay-actions.js"  type="module"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://korablobstorage.blob.core.windows.net/modal-bucket/korapay-collections.min.js"></script>
+</body>
+</html>

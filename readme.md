@@ -1,7 +1,6 @@
 # NIIT PROJECT 
 
 TODO
-1. Transfer to other vector accounts
+1. Style Transfer to other vector account Page
 2.  Withdraw funds
-3. show transaction history
-4. delete token after 24hrs
+3. delete token after 24hrs

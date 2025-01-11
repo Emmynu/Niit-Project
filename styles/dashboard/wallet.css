@@ -31,8 +31,9 @@
 }
 .balance-container{
     margin-top: 20px;
+   
 }
-.balance-container, #deposit{
+.balance-container, #deposit, .transaction-container{
     background-color: white;
     padding: 25px ;
     border: 1px solid #dddcdc99;
@@ -40,7 +41,7 @@
     width: 75%;
     /* box-shadow: 4px 15px 25px #acabab99; */
 }
-.balance-container >div:first-child > h5{
+.balance-container >div:first-child > h5, .transaction-container > h2{
     color: var(--main-color);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
@@ -84,6 +85,7 @@ hr{
 /* DEPOSIT  */
 #deposit{
     margin-top: 20px;
+
 }
 .deposit-label > h2{
     color: var(--main-color);
@@ -134,10 +136,93 @@ hr{
     opacity: 0.5;
 }
 
+/* Transaction history */
+.transaction-container{
+    width: auto;
+    margin-top: 20px;
+   
+}
+.scroll{
+    height: 200px;
+    overflow-y: scroll;
+}
+.transaction-empty{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.transaction-empty > img {
+    width: 350px;
+    height: 350px;
+}
+.transaction-empty > h2 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+}
+.transaction-container > section> h2{
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 800;
+    /* color: var(--main-color); */
+}
+.transaction-details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.transaction-details > div:first-child{
+    display: flex;
+    align-items: center;
+}
+.transaction-details > div:first-child > img{
+    border-radius: 50%;
+    padding: 10px;
+    width: 20px;
+    height: 20px;
+}
+.transaction-type-container{
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.transaction-type-container >  h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+.transaction-type-container > p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin-top: -5px;
+}
+
+.transaction-details > div:last-child > h5{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+
+}
+.transaction-details > div:last-child > p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: -17px;
+    background-color: rgb(186, 255, 186);
+    padding: 5px 10px;
+    color: green;
+}
+
+.transfer{
+    background-color: #87fdda;
+}
+.deposit{
+    background-color: #a1c9f3;
+
+}
+
 @media (max-width:1000px) {
   
     .balance-container, #deposit{
         width: auto;
+        grid-column: span 1;
     }
 }
 
@@ -151,5 +236,13 @@ hr{
     }
     .deposit-form > button {
         font-size: 14px;
+    }
+    .balance-container, #deposit{
+        width: auto;
+        grid-column: span 2;
+    }
+    .transaction-empty > img {
+        width: 250px;
+        height: 250px;
     }
 }

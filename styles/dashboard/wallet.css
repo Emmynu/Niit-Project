@@ -158,13 +158,13 @@ hr{
 }
 .transaction-empty > h2 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 20px;
+    font-size: 17px;
 }
 .transaction-container > section> h2{
     font-size: 20px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 800;
-    /* color: var(--main-color); */
+    color: var(--main-color);
 }
 .transaction-details{
     display: flex;
@@ -188,6 +188,8 @@ hr{
 .transaction-type-container >  h2{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
+    color: var(--main-color);
+
 }
 .transaction-type-container > p{
     font-family: Arial, Helvetica, sans-serif;
@@ -209,9 +211,12 @@ hr{
     padding: 5px 10px;
     color: green;
 }
-
-.transfer{
-    background-color: #87fdda;
+/*  */
+.transfer-in {
+    background-color: #5af1cb;
+}
+.transfer-out {
+    background-color: #5a8ff1;
 }
 .deposit{
     background-color: #a1c9f3;

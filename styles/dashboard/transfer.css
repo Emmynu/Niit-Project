@@ -1,0 +1,98 @@
+.transfer-container{
+    padding: 40px;
+}
+.transfer-label > h2{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: var(--main-color);
+    font-size: 20px;
+}
+.transfer-label > p {
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: var(--light-black);
+    margin-top: -8px;
+}
+.transfer-payment-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 50px;
+    align-items: start;
+}
+.transfer-section{
+    background-color: white;
+    padding: 25px ;
+    border: 1px solid #dddcdc99;
+    border-radius: 9px;
+    width: 75%;
+}
+.transfer-section > h3{
+    color: var(--main-color);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+.account-number-container > form  > label, .transfer-amount-container > label{
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color:var(--main-color);
+    margin-top: 10px;
+}
+.account-number-container > form > input,  .transfer-amount-container > input {
+    border: none;
+    border-bottom:  1px solid var(--light-black);
+    padding: 10px 5px;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.04rem;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.account-number-container > form >  button, .transfer-amount-container > button{
+    margin-top: 10px;
+    background-color: var(--main-color);
+    color: white;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 18px;
+    width: 100%;
+}
+
+.transfer-amount-container > button{
+    margin-top: 20px;    
+}
+.transfer-amount-container > button:disabled, .account-number-container > form >  button:disabled{
+    opacity: 0.5;
+}
+
+.error{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+    color: rgb(163, 3, 3);
+    margin-top: 4px;
+}
+
+@media (max-width:1000px) {
+    .transfer-payment-container{
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
+    .transfer-section{
+        width: auto;
+    }
+}
+
+@media (max-width: 800px) {
+    .transfer-container{
+        padding: 20px;
+    }
+}

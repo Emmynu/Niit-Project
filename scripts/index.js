@@ -128,7 +128,12 @@ export  async function  displayTransactions() {
             : 
             (transaction[1]?.type === "transfer" && transaction[1]?.recipient?.id !== auth?.currentUser?.uid) ?
               `https://img.icons8.com/?size=100&id=7801&format=png&color=000000` :
-              `https://img.icons8.com/?size=100&id=7800&format=png&color=000000`} class=${transaction[1]?.type} alt=""/> 
+              `https://img.icons8.com/?size=100&id=7800&format=png&color=000000`} class=${transaction[1]?.type === "deposit" ? 
+                "deposit"
+                : 
+                (transaction[1]?.type === "transfer" && transaction[1]?.recipient?.id !== auth?.currentUser?.uid) ?
+                  `transfer-out` :
+                  `transfer-in`} alt=""/> 
 
           <section class="transaction-type-container">
               <h2>${transaction[1]?.type === "deposit" ? 

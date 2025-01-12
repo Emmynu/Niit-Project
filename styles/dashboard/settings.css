@@ -80,6 +80,9 @@
 }
 .loading{
     margin: 20% 50%;
+   
+}
+.loading > img {
     width: 30px;
     height: 30px;
 }

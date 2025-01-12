@@ -15,8 +15,7 @@ window.addEventListener("DOMContentLoaded",async()=>{
         onAuthStateChanged(auth,user =>{ 
             const newUser =  users.filter(person=>person[1]?.id === user?.uid)
             const profile = newUser.map(user => user[1]) 
-            console.log(profile);
-            
+     
             document.querySelector(".name").innerHTML = `${profile[0]?.name}!`
             if (user?.emailVerified) {
                  document.querySelector(".label").textContent = "Congratulations, Your account is verified!"

@@ -16,7 +16,7 @@ export const sideBarComponent = `
                 </section>
                 <section>
                     <img src="/images/withdraw.png" alt="">
-                    <a href="#">Withdraw</a>
+                    <a href="/dashboard/withdraw.html">Withdraw</a>
                 </section>
                 <section>
                     <img src="/images/settings.png" alt="">
@@ -49,7 +49,7 @@ export const sideBarComponent = `
                     </section>
                     <section>
                         <img src="/images/withdraw.png" alt="">
-                        <a href="#">Withdraw</a>
+                        <a href="/dashboard/withdraw.html">Withdraw</a>
                     </section>
                     <section>
                         <img src="/images/settings.png" alt="">

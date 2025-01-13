@@ -145,6 +145,21 @@ hr{
 .scroll{
     height: 200px;
     overflow-y: scroll;
+    margin-top: 20px;
+}
+.filter-links {
+    display: flex; 
+    align-items: center;
+}
+.filter-links a{
+    margin-left: 5px;
+    color: var(--main-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.filter-links a:hover{
+    text-decoration: underline;
 }
 .transaction-empty{
     display: flex;
@@ -213,14 +228,16 @@ hr{
 }
 /*  */
 .transfer-in {
-    background-color: #5af1cb;
+    background-color: #a1fae4;
 }
 .transfer-out {
-    background-color: #5a8ff1;
+    background-color: #9bbeff;
 }
 .deposit{
-    background-color: #a1c9f3;
-
+    background-color: #b1d5fc;
+}
+.withdraw{
+    background-color: rgb(204, 204, 250);
 }
 
 @media (max-width:1000px) {
@@ -234,10 +251,13 @@ hr{
 @media (max-width: 800px) {
     .wallet-balance-container{
        grid-template-columns: repeat(1, 1fr);
-       margin-top: 20px;
+       margin-top: 20px 10px;
     }
     .wallet-container{
-        padding: 20px 10px;
+        padding: 20px;
+    }
+    .dashboard-label {
+        padding-left: 10px;
     }
     .deposit-form > button {
         font-size: 14px;
@@ -257,5 +277,11 @@ hr{
     }
     .transaction-empty > h2{
         font-size: 17px;
+    }
+    .transaction-type-container >  h2{
+        font-size: 14px;
+    }
+    .filter-links a{
+        font-size: 13px;
     }
 }

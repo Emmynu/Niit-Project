@@ -56,7 +56,7 @@ export async function depositFunc(data) {
       showToast("Popup closed by user!", errorStyles)
     },
     onFailed:async()=>{
-      await saveTransaction("Failed",amount,new Date().toDateString(), id,email,"deposit", name)
+      await saveTransaction("Failed",amount, id,email,"deposit", name)
       showToast("Transaction Failed, Please try again!", errorStyles)
       await displayTransactions()
     },
@@ -66,7 +66,7 @@ export async function depositFunc(data) {
         isProcessed = true
         await updateBalance(email, amount)
         await walletBalance()
-        await saveTransaction("Success",amount, new Date().toDateString(), id,email,"deposit", name, null)
+        await saveTransaction("Success",amount, id,email,"deposit", name, null)
         showToast("Transaction Sucessful!", sucessStyles)
         await displayTransactions()
       }

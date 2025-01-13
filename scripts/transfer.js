@@ -11,6 +11,7 @@ let isPending = false
 
 window.addEventListener("DOMContentLoaded", async()=>{
     const transactions = await getTransaction()
+    // let uniqueRecipient = []
     const newTransactions = transactions.filter(transaction=>{
         if ((transaction[1]?.type === "transfer") && (transaction[1]?.user?.id === auth?.currentUser?.uid)) {
             return true
@@ -18,9 +19,10 @@ window.addEventListener("DOMContentLoaded", async()=>{
             return false
         }
     })
-
-    console.log(newTransactions);
-    
+    const recipients = (newTransactions.map(transaction => transaction[1]?.recipient))
+    const uniqueRecipient = new Set()
+//    console.log( uniqueRecipient.add(recipients.map(receiver=>receiver.email)));
+   
     
 })
 
@@ -132,7 +134,7 @@ document.querySelector(".vector-form-container").addEventListener("submit", asyn
                     accountNumber: recipient[0][1]?.accountNumber,
 
                 }
-                await saveTransaction("sucess",parseInt(amountDom),new Date().toDateString(),sender[0][1]?.id,sender[0][1]?.email,"transfer",sender[0][1]?.name,receiver)
+                await saveTransaction("sucess",parseInt(amountDom),sender[0][1]?.id,sender[0][1]?.email,"transfer",sender[0][1]?.name,receiver)
                 showToast("Transaction Succesful", sucessStyles)
                 redirect("/")
             } catch (error) {

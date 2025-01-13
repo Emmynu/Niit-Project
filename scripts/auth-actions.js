@@ -69,7 +69,8 @@ export async function getUserInDb() {
     const user =  get(child(dbRef, `users/`)).then(res=> res.exists()? Object.entries(res.val()) : [])
     return user
    } catch (error) {
-    showToast(error?.message, errorStyles)
+    // showToast(error?.message, errorStyles)
+    return { error: error?.message}
    }
 }
 
@@ -116,7 +117,7 @@ function generateAccountNumber() {
 
 export function redirect(url) {
     setTimeout(() => {
-        window.location = url
+        window.location = url 
     }, 2000);
 }
 

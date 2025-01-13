@@ -93,11 +93,11 @@ export async function updateBalance(email, amount) {
 }
 
 
-export async function saveTransaction(status, amount, time, id, email,type, name, recipient) {
+export async function saveTransaction(status, amount, id, email,type, name, recipient) {
   await push(ref(db, `transactions/`),{
     status,
     amount,
-    createdAt:time,
+    createdAt: new Date().toDateString(),
     user:{
       id,
       name,
@@ -116,9 +116,13 @@ export async function getTransaction() {
 
 export  async function  displayTransactions() {
   const transactions =  await getTransaction()
+  const searchParams = new URLSearchParams(window.location.search)
+  const filter = (searchParams.get("type"));
   const newTransactions =  transactions.filter(transaction=> (transaction[1]?.user?.id === auth?.currentUser?.uid) || (transaction[1]?.recipient?.id === auth?.currentUser?.uid)).reverse()
+  const updatedTransactions = filter ? newTransactions.filter(transaction=>transaction[1]?.type === filter) : newTransactions
+
   let transactionDOM = ""
-  newTransactions.map(transaction=>{
+  updatedTransactions.map(transaction=>{
     transactionDOM += 
      ` 
      <article class="transaction-details">
@@ -126,11 +130,13 @@ export  async function  displayTransactions() {
           <img src=${transaction[1]?.type === "deposit" ? 
             "https://img.icons8.com/?size=100&id=122074&format=png&color=000000"
             : 
+            (transaction[1]?.type==="withdraw")  ? "https://img.icons8.com/?size=100&id=73812&format=png&color=000000" :
             (transaction[1]?.type === "transfer" && transaction[1]?.recipient?.id !== auth?.currentUser?.uid) ?
               `https://img.icons8.com/?size=100&id=7801&format=png&color=000000` :
               `https://img.icons8.com/?size=100&id=7800&format=png&color=000000`} class=${transaction[1]?.type === "deposit" ? 
                 "deposit"
                 : 
+                transaction[1]?.type === "withdraw" ? "withdraw"  :
                 (transaction[1]?.type === "transfer" && transaction[1]?.recipient?.id !== auth?.currentUser?.uid) ?
                   `transfer-out` :
                   `transfer-in`} alt=""/> 
@@ -138,8 +144,11 @@ export  async function  displayTransactions() {
           <section class="transaction-type-container">
               <h2>${transaction[1]?.type === "deposit" ? 
                 "Deposit" : 
+                (transaction[1]?.type === "withdraw") ?
+                  `Withdraw to ${transaction[1]?.recipient?.name.toLowerCase()}`
+                : 
                 (transaction[1]?.type === "transfer" && transaction[1]?.recipient?.id !== auth?.currentUser?.uid) ?
-                  `Transfer To ${transaction[1]?.recipient?.name}` :
+                  `Transfer to ${transaction[1]?.recipient?.name}` :
                 `Transfer from ${transaction[1]?.user?.name}`}</h2>
               <p>${transaction[1]?.createdAt}</p>
           </section>
@@ -147,7 +156,9 @@ export  async function  displayTransactions() {
 
         <div>
           <h5 >${transaction[1]?.type === "deposit" ? 
-            `+₦${transaction[1]?.amount}` : 
+            `+₦${transaction[1]?.amount}` :
+            (transaction[1]?.type === "withdraw") ? `-₦${transaction[1]?.amount}`
+            : 
             (transaction[1]?.type === "transfer" && transaction[1]?.recipient?.id !== auth?.currentUser?.uid) ?
               `-₦${transaction[1]?.amount}` :
             `+₦${transaction[1]?.amount}`}</h5>
@@ -171,3 +182,4 @@ export  async function  displayTransactions() {
     
   
 }
+

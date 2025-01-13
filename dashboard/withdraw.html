@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vector Pay - Withdraw</title>
+    <link rel="stylesheet" href="/styles/dashboard/nav.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"><!--Toastify library--> 
+</head>
+<body>
+    <main class="dashboard-container">
+        <section class="side-bar-lg-container"></section>
+        <section class="dashboard-content-container">
+            <article class="dashboard-nav-container"></article>
+            <!-- Withdraw Container -->
+            <main class="withdraw-container">
+                <!-- Withdraw label -->
+                 <section class="withdraw-label-container">
+                    <h2>Withdraw</h2>
+                    <p>Withdraw to your preferrable bank account</p>
+                 </section>
+                 <article>
+                    <!-- Withdraw Details -->
+                    <section class="withdraw-details-container">
+                        <form action="">
+                        <input type="number" name="accountNumber" class="account-number">
+                        <h2 class="error"></h2>
+                        <select name="banks" id=" banks" class="banks"></select>
+                        <button class="form-btn" type="submit">Continue</button>
+                        </form>
+                        <!-- bank details -->
+                            <section class="bank-details"></section>
+                    </section>
+                    <section>
+                        <input type="number" name="amount" id="amount" class="amount">
+                        <button class="amount-btn" >Enter</button>
+                    </section>
+                 </article>
+            </main>
+        </section>
+    </main>
+    <script src="/scripts/withdraw.js" type="module"></script>
+    <script src="/scripts/index.js" type="module"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.3/popup.min.js"></script>
+    
+</body>
+</html>

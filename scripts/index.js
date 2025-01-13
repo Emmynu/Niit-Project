@@ -72,7 +72,7 @@ export async function walletBalance() {
         document.querySelector(".account-number").innerHTML = `${accountInfo[0]?.accountNumber}`
     } else {
         showToast("User not found!")
-        redirect("/auth.register.html")
+        redirect("/auth/register.html")
     }
   } catch (error) {
     showToast(error?.message, errorStyles)

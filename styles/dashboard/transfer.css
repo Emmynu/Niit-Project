@@ -1,3 +1,12 @@
+:root{
+    --main-color: #03457C;
+    --light-color: #dfeffa;
+    --dark-red: #842029;
+    --light-black:#474747;
+    --lighter-color:#f0f4f8;
+}
+
+
 .transfer-container{
     padding: 40px;
 }
@@ -19,7 +28,7 @@
     margin-top: 50px;
     align-items: start;
 }
-.transfer-section{
+.transfer-section,.transfer-history-container{
     background-color: white;
     padding: 25px ;
     border: 1px solid #dddcdc99;
@@ -74,11 +83,76 @@
     opacity: 0.5;
 }
 
+.transfer-history-container{
+    width: auto;
+    margin-top: 30px;
+}
+.transfer-empty{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.transfer-empty > img {
+    width: 350px;
+    height: 350px;
+}
+.transfer-empty > h2 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 16px;
+    color: var(--main-color);
+}
+.transfer-history-label > h2{
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 800;
+    color: var(--main-color);
+}
 .error{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bolder;
     color: rgb(163, 3, 3);
     margin-top: 4px;
+}
+.transfer-beneficiary-container{
+    display: flex;
+    align-items: center;
+    background-color: var(--lighter-color);
+    padding-left: 10px;
+    border-radius: 7px;
+    margin-top: 10px;
+    cursor: copy;
+}
+.transfer-beneficiary-container > section{
+    margin-left: 10px;
+    margin-top: 15px;
+}
+.transfer-beneficiary-container > img{
+    width: 40px;
+    height: 40px;
+}
+.transfer-beneficiary-container h2{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--main-color);
+    font-size: 16px;
+}
+.scroll{
+    height: 200px;
+    overflow-y: scroll;
+    margin-top: 20px;
+}
+.transfer-beneficiary-container h4{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 100;
+    font-size: 14px;
+    margin-top: -10px;
+}
+.loading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10%;
 }
 
 @media (max-width:1000px) {
@@ -89,10 +163,23 @@
     .transfer-section{
         width: auto;
     }
+    .transfer-history-label > h2{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 17px;
+        font-weight: bold;
+    }
+    .loading{
+        margin: 20%;
+    }
 }
 
 @media (max-width: 800px) {
     .transfer-container{
         padding: 20px;
     }
+    .transfer-beneficiary-container > img{
+        width: 30px;
+        height: 30px;
+    }
+    
 }

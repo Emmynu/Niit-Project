@@ -156,6 +156,7 @@ hr{
     color: var(--main-color);
     text-decoration: none;
     font-weight: 600;
+    font-size: 12px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .filter-links a:hover{
@@ -173,7 +174,8 @@ hr{
 }
 .transaction-empty > h2 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 17px;
+    font-size: 16px;
+    color: var(--main-color);
 }
 .transaction-container > section> h2{
     font-size: 20px;
@@ -276,12 +278,12 @@ hr{
         font-weight: bold;
     }
     .transaction-empty > h2{
-        font-size: 17px;
+        font-size: 14px;
     }
     .transaction-type-container >  h2{
         font-size: 14px;
     }
     .filter-links a{
-        font-size: 13px;
+        font-size: 11.5px;
     }
 }

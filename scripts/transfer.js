@@ -8,10 +8,15 @@ let recipient = []
 let sender = []
 let isLoading = false
 let isPending = false
+let isBeneficaryLoading = false
 
 window.addEventListener("DOMContentLoaded", async()=>{
+    isBeneficaryLoading = true
+    if (isBeneficaryLoading) {
+        document.querySelector(".transfer-history").innerHTML = `<div class="loading"><img  src="/images/loading.gif" alt="Loading"></div>`
+        
+    }
     const transactions = await getTransaction()
-    // let uniqueRecipient = []
     const newTransactions = transactions.filter(transaction=>{
         if ((transaction[1]?.type === "transfer") && (transaction[1]?.user?.id === auth?.currentUser?.uid)) {
             return true
@@ -19,10 +24,57 @@ window.addEventListener("DOMContentLoaded", async()=>{
             return false
         }
     })
+
     const recipients = (newTransactions.map(transaction => transaction[1]?.recipient))
-    const uniqueRecipient = new Set()
-//    console.log( uniqueRecipient.add(recipients.map(receiver=>receiver.email)));
-   
+    const set = new Set() // or getting unique and unrepeated values in an array
+
+    recipients.map(receiver => {
+        set.add(receiver?.name)
+        set.add(receiver?.accountNumber)
+    })
+
+    
+    const array = Array.from(set);
+    const uniqueRecipients = [];
+    
+  
+    for (let i = 0; i < array.length; i += 2) {
+      const name = array[i];
+      const accountNumber = array[i + 1];
+  
+      // Check if accountNumber is defined to prevent errors if the Set has an odd number of elements.
+      if (accountNumber !== undefined) {
+          uniqueRecipients.push({ name, accountNumber });
+      } else {
+          console.warn("Odd number of elements in Set. Last name has no associated account number")
+      }
+    }
+  
+    let result = ""
+    uniqueRecipients.reverse().map(user =>{
+        result += `
+        <div class="transfer-beneficiary-container">
+            <img src="/images/transfer-profile.png" alt="">
+            <section> <h2>${user?.name}</h2>
+                <h4>${user?.accountNumber}</h4></section>
+        </div>
+        `
+    })
+
+    isBeneficaryLoading = false
+    
+
+    if (newTransactions.length > 0) {
+        document.querySelector(".transfer-history").innerHTML = result
+        document.querySelector(".transfer-history").classList.add("scroll")
+    } else {
+        document.querySelector(".transfer-history").innerHTML =  `
+        <section class="transaction-empty">
+            <img src="https://th.bing.com/th/id/OIP.ZsjPQuS9XJsVY_JFsHvn9QHaHa?rs=1&pid=ImgDetMain" alt="">
+            <h2>Transaction History empty</h2>
+        </section>`
+        
+    }
     
 })
 

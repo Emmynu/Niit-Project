@@ -1,0 +1,113 @@
+:root{
+    --main-color: #03457C;
+    --light-color: #dfeffa;
+    --dark-red: #842029;
+    --light-black:#474747;
+    --lighter-color:#f0f4f8;
+}
+.withdraw-container{
+    padding: 40px;
+}
+.withdraw-label-container > h2{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: var(--main-color);
+    font-size: 20px;
+}
+.withdraw-label-container > p {
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: var(--light-black);
+    margin-top: -8px;
+}
+.withdraw-details{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 50px;
+    align-items: start;
+}
+
+.withdraw-section{
+    background-color: white;
+    padding: 35px ;
+    border: 1px solid #dddcdc99;
+    border-radius: 9px;
+    width: 75%;
+}
+
+.withdraw-amount-container   > label, .withdraw-form label{
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color:var(--main-color);
+    margin-top: 10px;
+}
+.withdraw-amount-container  > input, .withdraw-form > input[type="number"], .withdraw-form  select  {
+    border: none;
+    border-bottom:  1px solid var(--light-black);
+    padding: 10px 5px;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.04rem;
+    width: 100%;
+    margin-top: 10px;
+}
+.withdraw-form select{
+    border: 1px solid black;
+    padding: 3px 10px;
+}
+.error, .bank-details{
+    color: rgb(189, 6, 6);
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-size: 15px; */
+}
+.bank-details > h2{
+    color: #474747;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    letter-spacing: 0.03rem;
+    background-color: var(--lighter-color);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.withdraw-amount-container  >  button, .withdraw-form > button{
+    margin-top: 15px;
+    background-color: var(--main-color);
+    color: white;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 18px;
+    width: 100%;
+}
+.withdraw-amount-container  >  button:disabled, .withdraw-form > button:disabled{
+    opacity: 0.5;
+
+}
+@media (max-width:1000px) {
+   .withdraw-section{
+    width: auto;
+   }
+   .withdraw-container{
+    padding: 22px;
+   }
+   .withdraw-details{
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+
+   }
+}
+
+@media (max-width: 800px) {
+
+}

@@ -21,8 +21,9 @@ let isPending = false
 window.addEventListener("DOMContentLoaded",async()=>{
     isLoading =  true
     if(isLoading){
-       document.querySelector(".error").innerHTML = `<h2>Loading....</h2>`
+       document.querySelector(".error").innerHTML = `<h2 style="color:black; font-size:14px">Loading....</h2>`
        formBtn.disabled =  true
+    //    amountBtn.disabled =  true
     }
     myHeaders.append("Authorization",paystackKey)
     const data = await fetch("https://api.paystack.co/bank",{
@@ -33,7 +34,9 @@ window.addEventListener("DOMContentLoaded",async()=>{
 
     if (data.error) {
       document.querySelector(".error").innerHTML = "Failed to fetch banks"
+      document.querySelector(".bank-container").innerHTML = ""
       formBtn.disabled =  true
+      amountBtn.disabled =  true
         
     }else{
         let result = ""
@@ -67,13 +70,14 @@ document.querySelector("form").addEventListener("submit", async(e)=>{
         const details =  await verifyBankDetails(banks, accountNumber)
         // console.log(details);
         if (details.error) {
-            bankDetails.innerHTML = details.error
+            bankDetails.innerHTML = `<h2>${details.error}</h2>`
         } else if(details.status === false ) {
-            bankDetails.innerHTML = details.message
+            bankDetails.innerHTML = `<h2>${details.message}</h2>`
         }
         else{
             recipient = details?.data
-            bankDetails.innerHTML = details?.data?.account_name
+            bankDetails.innerHTML = `<h2>${details?.data?.account_name}</h2>`
+            amountBtn.disabled =  false
         }
         
     }

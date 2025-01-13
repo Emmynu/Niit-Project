@@ -181,5 +181,10 @@
         width: 30px;
         height: 30px;
     }
-    
+    .transfer-beneficiary-container h2{
+        font-size: 14px;
+    }
+    .transfer-beneficiary-container h4{
+        font-size: 12px;
+    }
 }

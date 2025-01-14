@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded",()=>{
 registerForm.addEventListener("submit", async (e)=>{
     e.preventDefault()
     isLoading =  true
-    const  {name, email, password, checkbox} = Object.fromEntries(new FormData(e.currentTarget)) // get the values of the inputs    
-
+    const  {name, email, password, checkbox} = Object.fromEntries(new FormData(e.currentTarget)) // get the values of the inputs  
+   
     if (isLoading) {
         btn.disabled = true
         btn.innerHTML = "Loading..."

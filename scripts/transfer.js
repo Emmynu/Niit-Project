@@ -69,7 +69,7 @@ window.addEventListener("DOMContentLoaded", async()=>{
         document.querySelector(".transfer-history").classList.add("scroll")
     } else {
         document.querySelector(".transfer-history").innerHTML =  `
-        <section class="transaction-empty">
+        <section class="transfer-empty">
             <img src="https://th.bing.com/th/id/OIP.ZsjPQuS9XJsVY_JFsHvn9QHaHa?rs=1&pid=ImgDetMain" alt="">
             <h2>Transaction History empty</h2>
         </section>`
@@ -160,15 +160,18 @@ document.querySelector(".vector-form-container").addEventListener("submit", asyn
     
     if (amountDom <= 0) {
         showToast("Please enter amount", errorStyles)
+        isPending = false
         
     }
     if (amountDom < 10) {
+        isPending = false
         showToast("The minimum transfer amount is ₦10", errorStyles)
     }
     
     if (recipient.length > 0 && amountDom >= 10) {
     
         if ( parseInt(amountDom) > (sender[0][1]?.balance) ) {
+            isPending = false
             showToast("Insufficient funds, Plese top up", errorStyles)
 
         } else {
@@ -192,17 +195,17 @@ document.querySelector(".vector-form-container").addEventListener("submit", asyn
             } catch (error) {
                 showToast(error?.message, errorStyles)
             }
+            isPending = false
+
         }
         isPending = false
-
-
-        if (!isPending) {
-            document.querySelector(".transfer-btn").innerHTML =  "Enter"
-            document.querySelector(".transfer-btn").disabled = false
-            document.querySelector(".account-btn").disabled = false
-        }
-    }
-  
+    }   
+    console.log(isPending);
     
+    if (!isPending) {
+        document.querySelector(".transfer-btn").innerHTML =  "Enter"
+        document.querySelector(".transfer-btn").disabled = false
+        document.querySelector(".account-btn").disabled = false
+    } 
   })
   

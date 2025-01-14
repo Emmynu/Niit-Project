@@ -175,16 +175,23 @@
 
 @media (max-width: 800px) {
     .transfer-container{
-        padding: 20px;
+        padding: 10px;
+    }
+    .transfer-label{
+        padding-left: 20px;
+        padding-top: 20px;
     }
     .transfer-beneficiary-container > img{
         width: 30px;
         height: 30px;
     }
     .transfer-beneficiary-container h2{
-        font-size: 14px;
+        font-size: 13px;
     }
     .transfer-beneficiary-container h4{
-        font-size: 12px;
+        font-size: 11px;
+    }
+    .account-number-container > form >  button, .transfer-amount-container > button{
+        font-size: 15px;
     }
 }

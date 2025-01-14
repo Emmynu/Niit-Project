@@ -16,6 +16,7 @@ const amountBtn = document.querySelector(".amount-btn")
 let recipient = {}
 let isLoading = false
 let isPending = false
+let isPaymentLoading = false
 
 // get banks
 window.addEventListener("DOMContentLoaded",async()=>{
@@ -120,6 +121,13 @@ amountBtn.addEventListener("click", async()=>{
 
     const amount =  document.querySelector(".amount").value
     const  { email, uid, displayName} =  auth?.currentUser
+    isPaymentLoading = true
+
+    if (isPaymentLoading) {
+        amountBtn.disabled = true
+        formBtn.disabled = true
+        amountBtn.innerHTML = "Loading...."
+    }
 
     if(amount < 100){
         showToast("The minimum withdrawal amount is ₦100", errorStyles)
@@ -156,6 +164,13 @@ amountBtn.addEventListener("click", async()=>{
   }
   if (users?.error) {
         showToast(users?.error?.message, errorStyles)
+  }
+  isPaymentLoading =  false
+
+  if (!isPaymentLoading) {
+        amountBtn.disabled = false
+        formBtn.disabled = false
+        amountBtn.innerHTML = "Enter"
   }
 
 })

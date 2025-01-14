@@ -59,10 +59,10 @@
                     <h2>Transactions</h2>
                 </section>
                 <div class="filter-links">
-                    <a href="?type=">All</a>
-                    <a href="?type=deposit">Deposit</a>
-                    <a href="?type=transfer">Transfer</a>
-                    <a href="?type=withdraw">Withdraw</a>
+                    <h2 class="filter-link" data-filter="">All</h2>
+                    <h2 class="filter-link" data-filter="deposit">Deposit</h2>
+                    <h2 class="filter-link" data-filter="transfer">Transfer</h2>
+                    <h2 class="filter-link" data-filter="withdraw">Withdraw</h2>
                 </div>
                 <article class="transaction-history">
                    <section class="transaction-empty">
@@ -80,6 +80,8 @@
     
     <script src="/scripts/index.js"  type="module"></script>
     <script src="/scripts/pay-actions.js"  type="module"></script>
+    <script src="/scripts/balance.js"  type="module"></script>
+    <script src="/scripts/protectedRoute.js"  type="module"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://korablobstorage.blob.core.windows.net/modal-bucket/korapay-collections.min.js"></script>
 </body>

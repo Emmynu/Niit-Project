@@ -151,15 +151,17 @@ hr{
     display: flex; 
     align-items: center;
 }
-.filter-links a{
+.filter-links  h2{
     margin-left: 5px;
+    margin-top: -3px;
     color: var(--main-color);
     text-decoration: none;
-    font-weight: thin;
-    font-size: 12px;
+    font-weight: 200;
+    font-size: 13px;
+    cursor: pointer;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.filter-links a:hover{
+.filter-links h2:hover{
     text-decoration: underline;
 }
 .transaction-empty{
@@ -283,7 +285,7 @@ hr{
     .transaction-type-container >  h2{
         font-size: 14px;
     }
-    .filter-links a{
-        font-size: 10px;
+    .filter-links h2{
+        font-size: 11px;
     }
 }

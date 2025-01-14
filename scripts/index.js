@@ -1,4 +1,4 @@
-import { onAuthStateChanged, signOut  }  from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"; 
+import {  signOut  }  from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"; 
 import { update, ref, increment, push, get, child } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
 import { auth, db } from "./firebase-config.js";
 import {  redirect,showToast , getUserInDb} from "./auth-actions.js";
@@ -6,26 +6,8 @@ import { sideBarComponent, dashboardNav } from "./component.js";
 import { errorStyles } from "./toastify.js";
 
 
-const token =  JSON.parse(localStorage.getItem("token"))
 
-// protecting the home route against unauthenticated and unauthorized users
-window.addEventListener("DOMContentLoaded", async()=>{
-   onAuthStateChanged(auth,(user)=> {
-       if (!user?.emailVerified || !token) {
-            window.location = ("/auth/login.html")
-       }
-       setTimeout(() => {
-        document.querySelector(".user-container").innerHTML = `
-        <img src="${user?.photoURL}" alt="${user?.displayName}" class="user-profile">
-       <div>
-           <p>${user?.displayName}</p>
-           <span>${user?.email}</span>
-        </div>
-        `
-       }, 0);
-    })  
-    await walletBalance()  
-})
+
 
 // getiing the repeated part of the dashboard and displaying it when the page loads to prevent repition of html code
 window.addEventListener("DOMContentLoaded",async ()=>{
@@ -114,12 +96,35 @@ export async function getTransaction() {
   return transactions
 }
 
+const links = document.querySelectorAll(".filter-link")
+
+
+function updateParams(filter) {
+  const url = new URL(window.location)
+  if (filter) {
+    url.searchParams.set("type", filter)
+    
+  } else {
+    url.searchParams.set("type", filter)
+  }
+  window.history.pushState({}, '', url);
+  displayTransactions()
+}
+
+links.forEach(link=>{
+  link.addEventListener("click",()=>{
+    updateParams(link.dataset.filter)
+  })
+})
+
 export  async function  displayTransactions() {
   const transactions =  await getTransaction()
-  const searchParams = new URLSearchParams(window.location.search)
-  const filter = (searchParams.get("type"));
+  const urlParams = new URLSearchParams(window.location.search);
+  const params = urlParams.get("type");
+  
   const newTransactions =  transactions.filter(transaction=> (transaction[1]?.user?.id === auth?.currentUser?.uid) || (transaction[1]?.recipient?.id === auth?.currentUser?.uid)).reverse()
-  const updatedTransactions = filter ? newTransactions.filter(transaction=>transaction[1]?.type === filter) : newTransactions
+  
+  const updatedTransactions = params ? newTransactions.filter(transaction=>transaction[1]?.type === params) : newTransactions
 
   let transactionDOM = ""
   updatedTransactions.map(transaction=>{
@@ -169,9 +174,19 @@ export  async function  displayTransactions() {
   })
 
 
+
+
     if ( newTransactions.length > 0) {
-      document.querySelector(".transaction-history").innerHTML = transactionDOM
-      document.querySelector(".transaction-history").classList.add("scroll")
+        if (updatedTransactions.length > 0) {
+          document.querySelector(".transaction-history").innerHTML = transactionDOM
+          document.querySelector(".transaction-history").classList.add("scroll")
+        } else {
+          document.querySelector(".transaction-history").innerHTML= `
+          <section class="transaction-empty">
+              <img src="https://th.bing.com/th/id/OIP.ZsjPQuS9XJsVY_JFsHvn9QHaHa?rs=1&pid=ImgDetMain" alt="">
+              <h2>No Transaction History found for ${params}</h2>
+          </section>`
+        }
     } else {
       document.querySelector(".transaction-history").innerHTML= `
       <section class="transaction-empty">
@@ -180,6 +195,6 @@ export  async function  displayTransactions() {
       </section>`
     }
     
-  
 }
+
 
